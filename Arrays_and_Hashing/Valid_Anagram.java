@@ -4,12 +4,13 @@ class Solution {
             return false;
         }
 
-        char[] schar = s.toCharArray();
-        char[] tchar = t.toCharArray();
+        HashMap<Character, Integer> sCount = new HashMap<>();
+        HashMap<Character, Integer> tCount = new HashMap<>();
 
-        Arrays.sort(schar);
-        Arrays.sort(tchar);
-
-        return Arrays.equals(schar, tchar);
+        for(int i=0; i<s.length(); i++) {
+            sCount.put(s.charAt(i), sCount.getOrDefault(s.charAt(i) , 0) + 1);
+            tCount.put(t.charAt(i), tCount.getOrDefault(t.charAt(i) , 0) + 1);
+        }
+        return sCount.equals(tCount);
     }
 }
